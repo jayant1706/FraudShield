@@ -1,0 +1,119 @@
+{
+  "validation_benchmarks": [
+    {
+      "model_name": "LogisticRegression",
+      "dataset_split": "Validation",
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": {
+        "tp": 26,
+        "fp": 0,
+        "tn": 14975,
+        "fn": 0
+      },
+      "rates": {
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0
+      },
+      "threshold": {
+        "optimal": 0.95,
+        "evaluated": 0.95
+      }
+    },
+    {
+      "model_name": "RandomForest",
+      "dataset_split": "Validation",
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": {
+        "tp": 26,
+        "fp": 0,
+        "tn": 14975,
+        "fn": 0
+      },
+      "rates": {
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0
+      },
+      "threshold": {
+        "optimal": 0.66,
+        "evaluated": 0.66
+      }
+    },
+    {
+      "model_name": "XGBoost",
+      "dataset_split": "Validation",
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": {
+        "tp": 26,
+        "fp": 0,
+        "tn": 14975,
+        "fn": 0
+      },
+      "rates": {
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0
+      },
+      "threshold": {
+        "optimal": 0.95,
+        "evaluated": 0.95
+      }
+    }
+  ],
+  "champion_selection": {
+    "model_name": "XGBoost",
+    "dataset_split": "Validation",
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "confusion_matrix": {
+      "tp": 26,
+      "fp": 0,
+      "tn": 14975,
+      "fn": 0
+    },
+    "rates": {
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    "threshold": {
+      "optimal": 0.95,
+      "evaluated": 0.95
+    }
+  },
+  "holdout_test_metrics": {
+    "model_name": "XGBoost",
+    "dataset_split": "Holdout_Test",
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "confusion_matrix": {
+      "tp": 26,
+      "fp": 0,
+      "tn": 14974,
+      "fn": 0
+    },
+    "rates": {
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    "threshold": {
+      "optimal": 0.95,
+      "evaluated": 0.95
+    }
+  }
+}

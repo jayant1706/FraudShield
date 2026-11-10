@@ -1,0 +1,130 @@
+{
+  "version": "v1.0.0",
+  "model_name": "XGBoost",
+  "artifact_file": "model.joblib",
+  "preprocessor_file": "preprocessor.joblib",
+  "explainer_file": "shap_explainer.joblib",
+  "trained_at": "2026-11-08T12:31:46.767283+00:00",
+  "input_features": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "scaled_amount",
+    "scaled_time"
+  ],
+  "num_features": 30,
+  "validation_metrics": {
+    "model_name": "XGBoost",
+    "dataset_split": "Validation",
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "confusion_matrix": {
+      "tp": 26,
+      "fp": 0,
+      "tn": 14975,
+      "fn": 0
+    },
+    "rates": {
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    "threshold": {
+      "optimal": 0.95,
+      "evaluated": 0.95
+    }
+  },
+  "test_metrics": {
+    "model_name": "XGBoost",
+    "dataset_split": "Holdout_Test",
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "confusion_matrix": {
+      "tp": 26,
+      "fp": 0,
+      "tn": 14974,
+      "fn": 0
+    },
+    "rates": {
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    "threshold": {
+      "optimal": 0.95,
+      "evaluated": 0.95
+    }
+  },
+  "optimal_threshold": 0.95,
+  "comparison_table": [
+    {
+      "Model": "LogisticRegression",
+      "PR-AUC": 1.0,
+      "ROC-AUC": 1.0,
+      "F1-Score": 1.0,
+      "Recall": 1.0,
+      "Precision": 1.0,
+      "FPR": 0.0,
+      "FNR": 0.0,
+      "Threshold": 0.95
+    },
+    {
+      "Model": "RandomForest",
+      "PR-AUC": 1.0,
+      "ROC-AUC": 1.0,
+      "F1-Score": 1.0,
+      "Recall": 1.0,
+      "Precision": 1.0,
+      "FPR": 0.0,
+      "FNR": 0.0,
+      "Threshold": 0.66
+    },
+    {
+      "Model": "XGBoost",
+      "PR-AUC": 1.0,
+      "ROC-AUC": 1.0,
+      "F1-Score": 1.0,
+      "Recall": 1.0,
+      "Precision": 1.0,
+      "FPR": 0.0,
+      "FNR": 0.0,
+      "Threshold": 0.95
+    }
+  ],
+  "dataset_info": {
+    "total_records": 100000,
+    "train_records": 69999,
+    "val_records": 15001,
+    "test_records": 15000,
+    "fraud_count": 172
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "class_distribution": {
+    "total_records": 100000,
+    "legitimate_count": 99828,
+    "fraudulent_count": 172,
+    "fraud_percentage": 0.172,
+    "class_ratio": "1:580.4"
+  },
+  "amount_analysis": {
+    "legitimate": {
+      "mean": 43.77,
+      "std": 141.31,
+      "median": 16.43,
+      "q25": 6.4,
+      "q75": 42.26,
+      "max": 27905.46
+    },
+    "fraudulent": {
+      "mean": 216.39,
+      "std": 600.31,
+      "median": 31.38,
+      "q25": 9.07,
+      "q75": 128.24,
+      "max": 5084.82
+    }
+  },
+  "correlation_analysis": {
+    "top_positive_correlated_features": [
+      {
+        "feature": "V4",
+        "correlation": 0.1707
+      },
+      {
+        "feature": "V11",
+        "correlation": 0.1571
+      },
+      {
+        "feature": "Amount",
+        "correlation": 0.0498
+      },
+      {
+        "feature": "V15",
+        "correlation": 0.0054
+      },
+      {
+        "feature": "V9",
+        "correlation": 0.0053
+      }
+    ],
+    "top_negative_correlated_features": [
+      {
+        "feature": "V14",
+        "correlation": -0.2662
+      },
+      {
+        "feature": "V17",
+        "correlation": -0.214
+      },
+      {
+        "feature": "V12",
+        "correlation": -0.2048
+      },
+      {
+        "feature": "V10",
+        "correlation": -0.1923
+      },
+      {
+        "feature": "V26",
+        "correlation": -0.0056
+      }
+    ]
+  },
+  "outlier_analysis": {
+    "amount_iqr_upper_bound": 96.05,
+    "amount_outliers_count": 10302,
+    "amount_outliers_percentage": 10.3
+  }
+}
