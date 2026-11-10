@@ -11,3 +11,4 @@ This directory holds the credit card fraud benchmark dataset.
 If the raw Kaggle dataset is not pre-downloaded, the data ingestion pipeline automatically falls back to generating a synthetic benchmark dataset with identical distribution (`0.172%` fraud class ratio, PCA components V1-V28, Time, and Amount) so the pipeline works seamlessly out of the box.
 
 *Note: Raw `.csv` datasets and processed `.parquet` files are ignored by git via `.gitignore` to comply with version control best practices.*
+
