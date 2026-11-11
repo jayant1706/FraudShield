@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Allows absolute backend API URL in cross-origin cloud deployments (e.g., Vercel -> Render)
+// Falls back to relative '/api/v1' for local dev, Nginx reverse proxies, or Docker
+const apiBase = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL: `${apiBase}/api/v1`,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -35,4 +39,3 @@ api.interceptors.response.use(
 );
 
 export default api;
-

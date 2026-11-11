@@ -56,6 +56,17 @@ class Settings(BaseSettings):
         "http://127.0.0.1:5173",
     ]
 
+    @field_validator("BACKEND_CORS_ORIGINS", mode="before")
+    @classmethod
+    def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
+        if isinstance(v, str):
+            if v.strip() == "*":
+                return ["*"]
+            return [i.strip() for i in v.split(",") if i.strip()]
+        elif isinstance(v, list):
+            return v
+        return []
+
     # Risk Engine Default Thresholds
     RISK_THRESHOLD_LOW: float = 0.30
     RISK_THRESHOLD_HIGH: float = 0.70
