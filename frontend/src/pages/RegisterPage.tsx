@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShieldAlert, User, Lock, Mail, AlertCircle, ArrowRight } from 'lucide-react';
+import { ShieldAlert, User, Lock, Mail, AlertCircle, ArrowRight, ShieldCheck, UserCheck } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 
 export const RegisterPage: React.FC = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState<'INVESTIGATOR' | 'USER'>('INVESTIGATOR');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
@@ -17,7 +18,7 @@ export const RegisterPage: React.FC = () => {
     setError(null);
     setLoading(true);
     try {
-      await register(email, fullName, password);
+      await register(email, fullName, password, role);
       navigate('/');
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Registration failed. Please try again.');
@@ -31,12 +32,23 @@ export const RegisterPage: React.FC = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="w-full max-w-md bg-slate-900/80 border border-slate-800 rounded-2xl p-8 shadow-2xl backdrop-blur relative z-10">
-        <div className="flex flex-col items-center mb-8">
+        <div className="flex flex-col items-center mb-6">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/25 mb-3">
             <ShieldAlert className="w-7 h-7 text-white" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white">Create Investigator Account</h1>
-          <p className="text-xs text-slate-400 mt-1">Register for FraudShield platform access</p>
+          <h1 className="text-2xl font-bold tracking-tight text-white">Create New Account</h1>
+          <p className="text-xs text-slate-400 mt-1">Join FraudShield as an Investigator or Analyst</p>
+        </div>
+
+        {/* Security / RBAC Banner */}
+        <div className="mb-5 p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs space-y-1">
+          <div className="flex items-center gap-2 text-cyan-400 font-semibold">
+            <ShieldCheck className="w-4 h-4" />
+            <span>Role-Based Access Governance</span>
+          </div>
+          <p className="text-[11px] text-slate-400">
+            Public registration allows <strong>Investigator</strong> and <strong>User</strong> access. <strong>Administrator (ADMIN)</strong> privileges are strictly restricted to the platform owner.
+          </p>
         </div>
 
         {error && (
@@ -56,7 +68,7 @@ export const RegisterPage: React.FC = () => {
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                placeholder="Jane Doe"
+                placeholder="Alex Morgan"
                 className="w-full pl-9 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition"
               />
             </div>
@@ -71,7 +83,7 @@ export const RegisterPage: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="investigator@fraudshield.io"
+                placeholder="alex@fintech.io"
                 className="w-full pl-9 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition"
               />
             </div>
@@ -93,12 +105,48 @@ export const RegisterPage: React.FC = () => {
             </div>
           </div>
 
+          {/* Role Selection */}
+          <div>
+            <label className="block text-xs font-medium text-slate-300 mb-1.5">Assigned Operational Role</label>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setRole('INVESTIGATOR')}
+                className={`p-2.5 rounded-lg border text-left text-xs transition ${
+                  role === 'INVESTIGATOR'
+                    ? 'bg-cyan-500/15 border-cyan-500/40 text-cyan-300'
+                    : 'bg-slate-950/80 border-slate-800 text-slate-400 hover:text-white'
+                }`}
+              >
+                <div className="font-semibold flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" /> Investigator
+                </div>
+                <div className="text-[10px] text-slate-400 mt-1">Triage cases, score models, inspect vectors</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setRole('USER')}
+                className={`p-2.5 rounded-lg border text-left text-xs transition ${
+                  role === 'USER'
+                    ? 'bg-blue-500/15 border-blue-500/40 text-blue-300'
+                    : 'bg-slate-950/80 border-slate-800 text-slate-400 hover:text-white'
+                }`}
+              >
+                <div className="font-semibold flex items-center gap-1.5">
+                  <UserCheck className="w-3.5 h-3.5 text-blue-400" /> Analyst / User
+                </div>
+                <div className="text-[10px] text-slate-400 mt-1">View transactions, read analytics</div>
+              </button>
+            </div>
+          </div>
+
           <button
             type="submit"
             disabled={loading}
             className="w-full mt-2 py-2.5 px-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-medium text-sm rounded-lg shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 transition disabled:opacity-50"
           >
-            {loading ? 'Creating Account...' : 'Register Investigator'}
+            {loading ? 'Creating Account...' : `Register as ${role === 'INVESTIGATOR' ? 'Investigator' : 'User'}`}
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
@@ -113,4 +161,3 @@ export const RegisterPage: React.FC = () => {
     </div>
   );
 };
-

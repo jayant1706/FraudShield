@@ -29,11 +29,15 @@ class AuthService:
         if existing:
             raise ConflictError(f"User with email '{payload.email}' already exists.")
 
+        # Security Policy: Public registration cannot self-grant ADMIN role
+        requested_role = payload.role.value if payload.role else UserRole.INVESTIGATOR.value
+        assigned_role = requested_role if requested_role != UserRole.ADMIN.value else UserRole.INVESTIGATOR.value
+
         user = User(
             email=payload.email.lower().strip(),
             full_name=payload.full_name.strip(),
             password_hash=get_password_hash(payload.password),
-            role=payload.role.value if payload.role else UserRole.INVESTIGATOR.value,
+            role=assigned_role,
             is_active=True,
         )
         created_user = self.user_repo.create(user)
