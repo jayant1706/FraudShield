@@ -10,6 +10,15 @@
 
 **GitHub Repository:** [https://github.com/jayant1706/FraudShield](https://github.com/jayant1706/FraudShield)
 
+### 🚀 Live Cloud Deployments
+
+| Component | Production URL | Hosting | Status |
+| :--- | :--- | :--- | :---: |
+| **Investigator Dashboard** | [https://fraud-shield-one-khaki.vercel.app](https://fraud-shield-one-khaki.vercel.app) | **Vercel** | [![Vercel](https://img.shields.io/badge/Vercel-Live-success?style=flat-square&logo=vercel)](https://fraud-shield-one-khaki.vercel.app) |
+| **FastAPI REST API Gateway** | [https://fraudshield-c5eh.onrender.com](https://fraudshield-c5eh.onrender.com) | **Render** | [![Render](https://img.shields.io/badge/Render-Online-46E3B7?style=flat-square&logo=render)](https://fraudshield-c5eh.onrender.com) |
+| **Interactive OpenAPI Docs** | [https://fraudshield-c5eh.onrender.com/docs](https://fraudshield-c5eh.onrender.com/docs) | **Swagger UI** | `Active` |
+| **Health Check Probe** | [https://fraudshield-c5eh.onrender.com/health](https://fraudshield-c5eh.onrender.com/health) | **Render** | `200 OK` |
+
 **FraudShield** is an industry-grade, production-ready AI financial transaction fraud detection and risk decision platform. Built for banks, payment gateways, and fintech platforms, FraudShield combines machine learning ensembles (**XGBoost Champion**, **Random Forest**, **Isolation Forest**) with a **deterministic heuristic risk engine**, **sub-25ms TreeSHAP explainability**, an **audit-ready relational database**, and a **10-page enterprise investigator dashboard**.
 
 > [!IMPORTANT]
